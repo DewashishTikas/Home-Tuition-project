@@ -32,7 +32,7 @@ export default function Services() {
             />
           </div>
           <InputComp type={"file"}>Resume</InputComp>
-          <InputComp type={"url"}>LinkedIn URL</InputComp>
+          <InputComp type={"url"} notrequired={'true'}>LinkedIn URL</InputComp>
           <div className="my-10 text-center mx-auto w-max">
             <button
               tabIndex={-1}

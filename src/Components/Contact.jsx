@@ -29,6 +29,7 @@ const Contact = () => {
       if (hasError) {
         return;
       }
+  try{
     const response = await fetch("http://localhost:4000/form", {
       method: "POST",
       headers: {
@@ -41,6 +42,9 @@ const Contact = () => {
     }else{
       console.log('Something went wrong');
     }
+  }catch(err){
+    console.log(err);
+  }
   }
 
   return (

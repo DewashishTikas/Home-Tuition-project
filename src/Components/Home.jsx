@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 const Home = (props) => {
-  const isMobile = window.innerWidth < 768; // Tailwind 'sm' breakpoint
+  const isMobile = window.innerWidth < 768; 
   const { setCurrentRef } = useOutletContext();
   const elementRef = useRef();
   const homeTutorRef = useRef();

@@ -7,10 +7,13 @@ import Layout from "./Components/Layout";
 const About = lazy(()=>import("./Components/About"));
 const Contact = lazy(()=>import("./Components/Contact"));
 const ErrorPage = lazy(()=>import("./Components/ErrorPage"));
+const Vacancies = lazy(() => import("./Components/Vacancies"));
 const Form = lazy(()=>import("./Components/Form"));
 const Services = lazy(()=>import("./Components/Services"));
 const Career = lazy(()=>import("./Components/Career"));
 const Terms = lazy(()=>import("./Components/Terms"));
+const AdminLogin = lazy(() => import("./Components/AdminLogin"));
+const AdminPost = lazy(() => import("./Components/AdminPost"));
 
 
 function App() {
@@ -51,6 +54,21 @@ function App() {
       {
         path: "/form",
         element: <Form />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/vacancies",
+        element: <Vacancies />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/adminLogin",
+        element: <AdminLogin />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/adminPost",
+        element: <AdminPost />,
         errorElement: <ErrorPage />,
       },
     ]); 

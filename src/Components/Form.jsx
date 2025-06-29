@@ -1,17 +1,19 @@
-import  { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InputComp from "./InputComp";
 import { Radio } from "./Radio";
 import UploadFile from "./UploadFile";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import sph from "../assets/images/sph.png";
+import { FormVacancyContext } from "../../contexts/formVacanciesContext";
 
 export default function Form() {
+  const navigate = useNavigate();
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [name, setName] = useState("");
   const [fatherName, setFatherName] = useState("");
   const [motherName, setMotherName] = useState("");
   const [dob, setDob] = useState("");
-  const [mobile, setMobile] = useState('');
+  const [mobile, setMobile] = useState("");
   const [mobileAlternative, setMobileAlternative] = useState("");
   const [email, setEmail] = useState("");
   const [qualification, setQualification] = useState("");
@@ -24,7 +26,37 @@ export default function Form() {
   const [resume, setResume] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [sign, setSign] = useState(null);
+  const [selectedVacancy] = useContext(FormVacancyContext);
 
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!selectedVacancy) {
+      navigate("/vacancies");
+    }
+  }, []);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append("Selected Vacancy", selectedVacancy);
+
+    try {
+      const response = await fetch("/formSubmit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = response.json();
+      console.log(data);
+      if (response.status === 200) {
+        setSubmitted(true);
+      } else {
+        console.log("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <section className="mb-5 pb-5 max-w-[800px] mx-auto px-10 sm:px-30 pt-10 bg-gray-100 ">
       <div>
@@ -40,7 +72,7 @@ export default function Form() {
         method="POST"
         className="space-y-7"
         encType="multipart/form-data"
-        action="http://localhost:4000/form"
+        onSubmit={handleSubmit}
       >
         <div>
           <InputComp type={"text"} value={name} setValue={setName}>
@@ -163,9 +195,11 @@ export default function Form() {
         <Link to="/terms&conditons">Read Terms and Condition</Link>
         <button
           tabIndex={-1}
-          className="bg-blue-400 py-2 px-7 text-white rounded flex items-center justify-center my-5 mx-auto"
+          className={`bg-blue-400 py-2 px-7 text-white rounded flex items-center justify-center my-5 mx-auto ${
+            submitted ? "bg-green-500 pointer-events-none" : ""
+          }`}
         >
-          Submit
+          {submitted ? "Submitted Successfully" : "Submit"}
         </button>
       </form>
     </section>
