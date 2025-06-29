@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import InputComp from "./inputComp";
+import  { useState } from "react";
+import InputComp from "./InputComp";
 import { Radio } from "./Radio";
 import UploadFile from "./UploadFile";
 import { Link } from "react-router";
