@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+.swiper-slide img {
+  display: block;
+  background-size: cover;
+  width: 100vw;
+  aspect-ratio: 2.16;
+}
+body{
+   font-family: "Montserrat", sans-serif;
+   margin: 0;
+   padding: 0;
+}
+
+/* your-custom-styles.css */
+.phone-input input {
+  padding: 8px;
+  font-size: 1rem;
+  outline: none;  
+  border-bottom: 1px solid rgb(190, 189, 189);
+  padding-block: 3;
+}
+.phone-input input:focus{
+  border-bottom:1px solid black;
+}
+
+@media screen and (max-width:450px){
+    .swiper-slide img{
+        aspect-ratio: 1.5;
+    }
+}
