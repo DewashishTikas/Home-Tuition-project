@@ -10,7 +10,7 @@ export default function VacancySelector() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(""); 
+        const response = await fetch("/api/vacancies"); 
         const data = await response.json();
         setVacancies(data);
       } catch (error) {
@@ -46,9 +46,9 @@ export default function VacancySelector() {
                 <input
                 required
                   type="radio"
-                  value={vacancy.id}
-                  checked={selectedVacancy === vacancy.id}
-                  onChange={() => setSelectedVacancy(vacancy.id)}
+                  value={vacancy.name}
+                  checked={selectedVacancy === vacancy.name}
+                  onChange={() => setSelectedVacancy(vacancy.name)}
                   className="accent-blue-600 my-4"
                 />
                 <span>{vacancy.name}</span>

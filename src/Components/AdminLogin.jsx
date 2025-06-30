@@ -7,17 +7,18 @@ const  AdminLogin = () => {
   const [adminUserName,setAdminUserName] = useState()
   const [adminPass,setAdminPass] = useState()
 
-  async function handleSubmit() {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+  async function handleSubmit(e) {
+    e.preventDefault()
     try{
-      const response = await fetch("", {
+      const response = await fetch("/adminLogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: {adminUserName , adminPass},
+        body: JSON.stringify({ adminUserName, adminPass }),
       });
-      const data = response.json();
+      const data = await response.json();
       if (response.status === 200) {
         navigate("/adminPost");
       } else {

@@ -9,26 +9,27 @@ const AdminPost = () => {
   const [post, setPost] = useState();
   const [message, setMessage] = useState("");
   const [vancancies, setVacancies] = useState([]);
-  useEffect(async () => {
+  useEffect( () => {
     try {
-      const response = await fetch("/profile");
-      if (response.status !== 200) {
-        console.log("Unauthorized access");
-        navigate("/adminLogin");
-        return;
-      }
+      (async () => {
+        const response = await fetch("/profile");
+        if (response.status !== 200) {
+          console.log("Unauthorized access");
+          navigate("/adminLogin");
+        }
+      })()
     } catch (err) {
-      console.log(object);
+      console.log(err);
     }
-  });
-  useEffect(async () => {
+  },[]);
+  useEffect( () => {
     (async () => {
     try {
-      const response = await fetch("");
+      const response = await fetch("/api/vacancies");
       const data = response.json();
       setVacancies(data);
     } catch (err) {
-      console.log(object);
+      console.log(err);
     }
     })();
   }, [post]);
@@ -36,7 +37,7 @@ const AdminPost = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("", {
+      const response = await fetch("/addVacancy", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,24 +54,24 @@ const AdminPost = () => {
         setMessage(data.error || "Something went wrong");
       }
     } catch (err) {
-      console.log(object);
+      console.log(err);
     }
   }
 
-  async function handleDelete(vancancyId) {
+  async function handleDelete(vacancyName) {
    try {
-     const response = await fetch("", {
+     const response = await fetch("/deleteVacancy", {
        method: "Delete",
        headers: {
          "Content-Type": "application/json",
        },
-       body: { vancancyId },
+       body: JSON.stringify({ vacancyName }),
      });
      const data = response.json();
      if (response.status === 200)
        setMessage(data.message || "Vacancy Deleted Successfully");
    } catch (err) {
-     console.log(object);
+     console.log(err);
    }
   }
 

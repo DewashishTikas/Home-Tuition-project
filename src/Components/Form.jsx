@@ -46,7 +46,7 @@ export default function Form() {
         method: "POST",
         body: formData,
       });
-      const data = response.json();
+      const data = await response.json();
       console.log(data);
       if (response.status === 200) {
         setSubmitted(true);
