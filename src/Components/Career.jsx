@@ -86,7 +86,7 @@ const Career = () => {
           </p>
         </div>
         <Link
-          to="/form"
+          to="/vacancies"
           className="block w-max mx-auto rounded-xl hover:scale-105 px-5 py-3 backdrop-blur-md text-black/50 hover:bg-white/20 transition text-sm sm:text-lg font-semibold bg-white/10 shadow-2xl border border-white/20"
         >
           Apply Now

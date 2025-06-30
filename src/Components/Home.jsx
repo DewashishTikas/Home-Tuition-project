@@ -70,7 +70,7 @@ const Home = (props) => {
             Home Tuition
           </p>
           <div className="max-w-full sm:max-w-1/2">
-            <img loading='lazy' src={book} alt="Tutor Image" />
+            <img loading="lazy" src={book} alt="Tutor Image" />
           </div>
 
           <div>
@@ -86,7 +86,7 @@ const Home = (props) => {
               opportunities and personal growth.
             </p>
             <div className=" sm:w-full w-fit mx-auto">
-              <Button path={"/form"}>Apply Now</Button>
+              <Button path={"/vacancies"}>Apply Now</Button>
             </div>
           </div>
         </div>
@@ -113,11 +113,16 @@ const Home = (props) => {
               reliability.
             </p>{" "}
             <div className=" sm:w-full w-fit mx-auto">
-              <Button path={"/form"}>Apply Now</Button>
+              <Button path={"/vacancies"}>Apply Now</Button>
             </div>
           </div>
           <div className="max-w-1/2">
-            <img loading='lazy' className="sm:block hidden " src={labour} alt="Bijli Vibhag" />
+            <img
+              loading="lazy"
+              className="sm:block hidden "
+              src={labour}
+              alt="Bijli Vibhag"
+            />
           </div>
         </div>
         <div
@@ -129,7 +134,7 @@ const Home = (props) => {
           </h2>
 
           <div className="max-w-full ">
-            <img loading='lazy' src={labourwork} alt="Tutor Image" />
+            <img loading="lazy" src={labourwork} alt="Tutor Image" />
           </div>
 
           <div className="sm:max-w-1/2">
@@ -146,7 +151,7 @@ const Home = (props) => {
               workers to find meaningful, nearby employment.
             </p>
             <div className="w-fit sm:w-full mx-auto">
-              <Button path={"/form"}>Apply Now</Button>
+              <Button path={"/vacancies"}>Apply Now</Button>
             </div>
           </div>
         </div>
