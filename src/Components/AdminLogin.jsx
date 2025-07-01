@@ -50,7 +50,9 @@ const  AdminLogin = () => {
           >
             Password
           </InputComp>
-          <Button css={"my-5"}>Submit</Button>
+          <button className=" bg-blue-400 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
+            Submit
+          </button>
         </form>
       </div>
     </div>
