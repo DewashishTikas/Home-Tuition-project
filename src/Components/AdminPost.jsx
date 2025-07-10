@@ -26,7 +26,8 @@ const AdminPost = () => {
     (async () => {
     try {
       const response = await fetch("/api/vacancies");
-      const data = response.json();
+      const data = await response.json();
+     
       setVacancies(data);
     } catch (err) {
       console.log(err);
@@ -67,7 +68,7 @@ const AdminPost = () => {
        },
        body: JSON.stringify({ vacancyName }),
      });
-     const data = response.json();
+     const data = await response.json();
      if (response.status === 200)
        setMessage(data.message || "Vacancy Deleted Successfully");
    } catch (err) {
