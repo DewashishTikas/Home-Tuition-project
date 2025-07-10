@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
 
-export default function InputComp({children,type,value,setValue,notrequired}) {
-
+export default function InputComp({
+  children,
+  type,
+  value,
+  setValue,
+  notrequired,
+}) {
   return (
     <>
       <label
@@ -36,7 +41,7 @@ export default function InputComp({children,type,value,setValue,notrequired}) {
             ? children.substring(0, children.length - 1)
             : children
         }`}
-        className="` block w-full mt-1 p-2 border-t-0 border-x-0 border-1 border-gray-300 focus:border-black outline-none cursor-pointer "
+        className=" block w-full mt-1 p-2 border-t-0 border-x-0 border-1 border-gray-300 focus:border-black outline-none cursor-pointer "
       />
     </>
   );

@@ -1,6 +1,9 @@
 import React from "react";
 import aboutBg from "../assets/images/aboutbg.png";
 import about from "../assets/images/about.png";
+import person1 from "../assets/images/person1.png";
+import person2 from "../assets/images/person2.jpeg";
+import PeopleBiography from "./PeopleBiography";
 
 const About = () => {
   return (
@@ -75,6 +78,27 @@ const About = () => {
               – Steve Jobs
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="md:w-3/4 w-9/10 md:px-0 px-5 mx-auto my-12">
+        <h2 className="text-3xl md:text-5xl font-bold my-5">Meet our Team</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] md:gap-5 gap-10 ">
+          <PeopleBiography
+            photo={person1}
+            name={"Shivani Rathor"}
+            title={"Founder & director"}
+          >
+            "Don't rely on luck, have the courage and determination to achieve
+            it yourself"
+          </PeopleBiography>
+          <PeopleBiography
+            photo={person2}
+            name={"Nikhil Rathor"}
+            title={"Manager & HR"}
+          >
+            "It is better to keep doing something in life than sitting idle"
+          </PeopleBiography>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputComp from "./InputComp";
 import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css"; 
+import "react-phone-number-input/style.css";
 
 export default function Services() {
   const [name, setName] = useState("");
@@ -9,7 +9,7 @@ export default function Services() {
   return (
     <>
       <div className=" overflow-hidden absolute w-full h-[900px] ">
-        <div className="w-[170%] h-1/2 absolute -left-45 -top-5 sm:top-40 bg-violet-600 rotate-150 "></div>
+        <div className="w-[170%] h-1/2 absolute -left-45 -top-5 sm:top-40 bg-blue-600 rotate-150 "></div>
       </div>
       <div className="relative">
         <h1 className="md:text-4xl font-bold mt-30 my-10 text-center text-2xl">
@@ -32,7 +32,9 @@ export default function Services() {
             />
           </div>
           <InputComp type={"file"}>Resume</InputComp>
-          <InputComp type={"url"} notrequired={'true'}>LinkedIn URL</InputComp>
+          <InputComp type={"url"} notrequired={"true"}>
+            LinkedIn URL
+          </InputComp>
           <div className="my-10 text-center mx-auto w-max">
             <button
               tabIndex={-1}

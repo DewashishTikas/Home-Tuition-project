@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Link, useLocation } from "react-router";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/sph.png";
 import CustomNavLink from "./CustomNavLink";
 import { links } from "./Design.jsx";
 import Button from "./Button.jsx";

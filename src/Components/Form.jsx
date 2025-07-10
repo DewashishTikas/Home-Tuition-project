@@ -47,7 +47,6 @@ export default function Form() {
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
       if (response.status === 200) {
         setSubmitted(true);
       } else {
@@ -195,7 +194,7 @@ export default function Form() {
         <Link to="/terms&conditons">Read Terms and Condition</Link>
         <button
           tabIndex={-1}
-          className={`bg-blue-400 py-2 px-7 text-white rounded flex items-center justify-center my-5 mx-auto ${
+          className={`bg-red-500 py-2 px-7 text-white rounded flex items-center justify-center my-5 mx-auto ${
             submitted ? "bg-green-500 pointer-events-none" : ""
           }`}
         >

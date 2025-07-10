@@ -3,14 +3,14 @@ import InputComp from "./InputComp";
 import Button from "./Button";
 import { useNavigate } from "react-router";
 
-const  AdminLogin = () => {
-  const [adminUserName,setAdminUserName] = useState()
-  const [adminPass,setAdminPass] = useState()
+const AdminLogin = () => {
+  const [adminUserName, setAdminUserName] = useState();
+  const [adminPass, setAdminPass] = useState();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   async function handleSubmit(e) {
-    e.preventDefault()
-    try{
+    e.preventDefault();
+    try {
       const response = await fetch("/adminLogin", {
         method: "POST",
         headers: {
@@ -24,17 +24,15 @@ const  AdminLogin = () => {
       } else {
         navigate("/");
       }
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   }
 
-
   return (
-    <div className="flex flex-col  justify-center items-center h-[100vh] bg-gray-100">
-      <div className="shadow-xl px-40 py-15 bg-white rounded-2xl">
-        <h1 className="text-center">Admin Login</h1>
+    <div className="flex flex-col justify-center items-center h-[100vh] bg-gray-100">
+      <div className="shadow-xl px-20 py-15 bg-white rounded-2xl md:w-1/2 w-3/4">
+        <h1 className="text-center text-3xl">Admin Login</h1>
         <form onSubmit={handleSubmit}>
           <InputComp
             value={adminUserName}
@@ -50,7 +48,9 @@ const  AdminLogin = () => {
           >
             Password
           </InputComp>
-          <Button css={"my-5"}>Submit</Button>
+          <button className=" bg-red-500 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
+            Submit
+          </button>
         </form>
       </div>
     </div>
