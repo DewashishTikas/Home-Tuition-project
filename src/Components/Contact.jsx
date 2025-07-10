@@ -57,7 +57,7 @@
 
     return (
       <>
-        <section className=" mx-auto py-15 lg:py-23 ">
+        <section className=" mx-auto py-15 lg:py-23 mt-8">
           <div className="flex gap-7  flex-col lg:flex-row">
             <div className="items-self-stretch">
               <img
@@ -170,7 +170,7 @@
 
                 <div>
                   <button
-                    className={`bg-blue-700 text-white text-lg px-6 py-2 rounded hover:bg-blue-800 transition ${
+                    className={`bg-blue-500 text-white text-lg px-6 py-2 rounded hover:bg-blue-800 transition ${
                       submitted ? "bg-green-500 pointer-events-none" : ""
                     } duration-700 `}
                   >
@@ -181,7 +181,7 @@
             </div>
           </div>
           <div className="mt-12 flex lg:flex-row flex-col md:justify-around md:gap-10 px-5">
-            <h2 className="md:text-6xl text-2xl  font-semibold mb-4 text-blue-600 md:max-w-1/2">
+            <h2 className="md:text-6xl text-2xl  font-semibold mb-4 text-blue-500 md:max-w-1/2">
               Contact Us for your needs
             </h2>
             <div className="mt-10 md:max-w-1/2 space-y-3">

@@ -32,10 +32,10 @@ const  AdminLogin = () => {
 
 
   return (
-    <div className="flex flex-col  justify-center items-center h-[100vh] bg-gray-100">
-      <div className="shadow-xl px-40 py-15 bg-white rounded-2xl">
-        <h1 className="text-center">Admin Login</h1>
-        <form onSubmit={handleSubmit}>
+    <div className="flex flex-col justify-center items-center h-[100vh] bg-gray-100">
+      <div className="shadow-xl px-20 py-15 bg-white rounded-2xl md:w-1/2 w-3/4">
+        <h1 className="text-center text-3xl">Admin Login</h1>
+        <form onSubmit={handleSubmit} >
           <InputComp
             value={adminUserName}
             setValue={setAdminUserName}
@@ -50,7 +50,7 @@ const  AdminLogin = () => {
           >
             Password
           </InputComp>
-          <button className=" bg-blue-400 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
+          <button className=" bg-red-500 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
             Submit
           </button>
         </form>

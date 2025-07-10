@@ -11,6 +11,7 @@ import slider1 from "../assets/images/slider1.jpeg";
 import slider2 from "../assets/images/slider2.png";
 import slider3 from "../assets/images/slider3.jpeg";
 import slider4 from "../assets/images/slider4.jpg";
+import slider5 from "../assets/images/slider5.jpeg";
 const Carousal = () => {
   return (
     <>
@@ -28,13 +29,16 @@ const Carousal = () => {
         modules={[Autoplay, Pagination, Navigation]}
       >
         <SwiperSlide>
-          <img loading="lazy" className="select-none" src={slider1} alt="" />
+          <img loading="lazy" className="select-none" src={slider5} alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-between">
           <img loading="lazy" className="select-none" src={slider2} alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-between">
           <img loading="lazy" className="select-none" src={slider3} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img loading="lazy" className="select-none" src={slider1} alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-between">
           <img loading="lazy" className="select-none" src={slider4} alt="" />
