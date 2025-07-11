@@ -59,21 +59,21 @@ const AdminPost = () => {
     }
   }
 
-  async function handleDelete(vacancyName) {
-   try {
-     const response = await fetch("/deleteVacancy", {
-       method: "Delete",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({ vacancyName }),
-     });
-     const data = await response.json();
-     if (response.status === 200)
-       setMessage(data.message || "Vacancy Deleted Successfully");
-   } catch (err) {
-     console.log(err);
-   }
+  async function handleDelete(vacancyId) {
+    try {
+      const response = await fetch("/deleteVacancy", {
+        method: "Delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ vacancyId }),
+      });
+      const data = await response.json();
+      if (response.status === 200)
+        setMessage(data.message || "Vacancy Deleted Successfully");
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
