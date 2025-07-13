@@ -12,7 +12,9 @@ const AdminPost = () => {
   useEffect( () => {
     try {
       (async () => {
-        const response = await fetch("/profile");
+        const response = await fetch("http://localhost:8000/admin", {
+          credentials: "include",
+        });
         if (response.status !== 200) {
           console.log("Unauthorized access");
           navigate("/adminLogin");
@@ -25,8 +27,8 @@ const AdminPost = () => {
   useEffect( () => {
     (async () => {
     try {
-      const response = await fetch("/api/vacancies");
-      const data = await response.json();
+      const response = await fetch("http://localhost:8000/user/vacancy");
+      const { data } = await response.json();
      
       setVacancies(data);
     } catch (err) {
@@ -38,8 +40,9 @@ const AdminPost = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("/addVacancy", {
+      const response = await fetch("http://localhost:8000/admin/vacancy", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -61,8 +64,9 @@ const AdminPost = () => {
 
   async function handleDelete(vacancyId) {
     try {
-      const response = await fetch("/deleteVacancy", {
-        method: "Delete",
+      const response = await fetch("http://localhost:8000/admin/vacancy", {
+        method: "DELETE",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
