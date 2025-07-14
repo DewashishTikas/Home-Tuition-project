@@ -10,8 +10,8 @@ export default function VacancySelector() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("/api/vacancies"); 
-        const data = await response.json();
+        const response = await fetch("http://localhost:8000/user/vacancy"); 
+        const { data } = await response.json();
         setVacancies(data);
       } catch (error) {
         console.error("Error fetching vacancies:", error);

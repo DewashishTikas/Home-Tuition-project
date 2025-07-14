@@ -28,7 +28,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
-console.log(process.env.CLIENT_URL);
 app.use(express.json());
 app.use('/user', userRouter);
 app.use('/admin', verifyAdminToken, adminRouter);

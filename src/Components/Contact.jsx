@@ -14,7 +14,7 @@ const Contact = () => {
   const [emailErr, setEmailErr] = useState(false);
 
   const errMessages = {
-    phonenoErr: "Phone no should contains 10 digits",
+    phonenoErr: "Phone no. should contains 10 digits",
     emailErr: "Enter valid Email",
   };
   function handleChange({ name, value }) {
@@ -37,7 +37,7 @@ const Contact = () => {
       return;
     }
     try {
-      const response = await fetch("/contactForm", {
+      const response = await fetch("http://localhost:8000/user/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

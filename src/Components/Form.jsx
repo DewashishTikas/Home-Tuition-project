@@ -42,7 +42,7 @@ export default function Form() {
     formData.append("Selected Vacancy", selectedVacancy);
 
     try {
-      const response = await fetch("/formSubmit", {
+      const response = await fetch("http://localhost:8000/user/joinApp", {
         method: "POST",
         body: formData,
       });
