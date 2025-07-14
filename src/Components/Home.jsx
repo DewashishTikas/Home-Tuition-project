@@ -5,16 +5,17 @@ import { useOutletContext } from "react-router";
 import book from "../assets/images/booktutor.jpg";
 import labour from "../assets/images/labour.jpg";
 import labourwork from "../assets/images/labourwork.jpg";
+import hospital from "../assets/images/hospital-sector.jpg";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 const Home = (props) => {
-  const isMobile = window.innerWidth < 768; 
   const { setCurrentRef } = useOutletContext();
   const elementRef = useRef();
   const homeTutorRef = useRef();
   const bijliRef = useRef();
   const labourRef = useRef();
+  const hospitalRef = useRef();
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
@@ -45,6 +46,16 @@ const Home = (props) => {
       opacity: 0,
       scrollTrigger: {
         trigger: labourRef.current,
+        start: "top bottom",
+        end: "bottom 20%",
+      },
+    });
+    gsap.from(hospitalRef.current, {
+      x: "100%",
+      duration: 1.5,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: hospitalRef.current,
         start: "top bottom",
         end: "bottom 20%",
       },
@@ -100,6 +111,7 @@ const Home = (props) => {
             </h2>
             <div className="max-w-full ">
               <img
+                loading="lazy"
                 className="block sm:hidden mt-4"
                 src={labour}
                 alt="Tutor Image"
@@ -153,6 +165,43 @@ const Home = (props) => {
             <div className="w-fit sm:w-full mx-auto">
               <Button path={"/vacancies"}>Apply Now</Button>
             </div>
+          </div>
+        </div>
+        <div
+          ref={hospitalRef}
+          className="flex sm:flex-row flex-col shadow-[0_0px_8px_rgba(0,0,0,0.1)] my-10 py-10 px-5 gap-8"
+        >
+          <div className="sm:max-w-1/2">
+            <h2 className="lg:text-5xl text-2xl md:text-3xl lg:mt-10 ">
+              <b>Hospital Sector</b>
+            </h2>
+            <div className="max-w-full ">
+              <img
+                loading="lazy"
+                className="block sm:hidden mt-4"
+                src={hospital}
+                alt="Hospital"
+              />
+            </div>
+            <p className="lg:text-xl my-5 md:text-lg text-base text-justify">
+              We are looking for compassionate professionals to join our
+              healthcare team. From clinical to administrative roles, every team
+              member plays a vital role in patient care and hospital operations.
+              Duties may include patient support, record management, diagnostic
+              assistance, and ensuring a safe, welcoming environment in line
+              with healthcare standards.
+            </p>{" "}
+            <div className=" sm:w-full w-fit mx-auto">
+              <Button path={"/vacancies"}>Apply Now</Button>
+            </div>
+          </div>
+          <div className="max-w-1/2">
+            <img
+              loading="lazy"
+              className="sm:block hidden "
+              src={hospital}
+              alt="Hospital Sector"
+            />
           </div>
         </div>
       </div>
