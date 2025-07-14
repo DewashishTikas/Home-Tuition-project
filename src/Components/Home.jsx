@@ -21,7 +21,7 @@ const Home = (props) => {
   useGSAP(() => {
     gsap.from(homeTutorRef.current, {
       x: "-100%",
-      duration: 1.5,
+      duration: 2,
       opacity: 0,
       scrollTrigger: {
         trigger: homeTutorRef.current,
@@ -31,7 +31,7 @@ const Home = (props) => {
     });
     gsap.from(bijliRef.current, {
       x: "100%",
-      duration: 1.5,
+      duration: 2,
       opacity: 0,
       scrollTrigger: {
         trigger: bijliRef.current,
@@ -42,7 +42,7 @@ const Home = (props) => {
 
     gsap.from(labourRef.current, {
       x: "-100%",
-      duration: 1.5,
+      duration: 2,
       opacity: 0,
       scrollTrigger: {
         trigger: labourRef.current,
@@ -52,7 +52,7 @@ const Home = (props) => {
     });
     gsap.from(hospitalRef.current, {
       x: "100%",
-      duration: 1.5,
+      duration: 2,
       opacity: 0,
       scrollTrigger: {
         trigger: hospitalRef.current,
