@@ -2,7 +2,7 @@ import express from "express";
 import VacancyModel from "../models/vacancy.js";
 import ContactModel from "../models/contact.js";
 import { uploadFiles } from "../middlewares/uploadFile.js";
-import contact from "../models/contact.js";
+import ApplyModel from "../models/apply.js";
 
 const router = express.Router();
 
@@ -38,15 +38,39 @@ router.post('/contact', async (req, res) => {
     }
 });
 
-router.post('/joinApp', uploadFiles(["Signature", "Photo", "Resume", "Attach Original Marksheet"]), async (req, res) => {
+router.post('/apply', uploadFiles(["Signature", "Photo", "Resume", "Attach Original Marksheet"]), async (req, res) => {
     try {
-        const data = req.body;
+        const formData = req.body;
+        const files = req.files;
+        console.log(req.files);
+        const data = {
+            name: formData["Name"],
+            fatherName: formData["Father's Name"],
+            motherName: formData["Mother's Name"],
+            DOB: formData["Date of Birth"],
+            mobileNum: formData["Mobile Number"],
+            mobileNumAlt: formData["Mobile Number (Alternative)"],
+            emailId: formData["Email"],
+            qualification: formData["Qualification"],
+            category: formData["Category"],
+            mpDomicile: formData["MP Domicile"],
+            address: formData["Address"],
+            referenceName: formData["Reference Name"],
+            anyQuestion: formData["Any Question"],
+            selectedVacancy: formData["Selected Vacancy"],
+            signatureUrl: files["Signature"][0].path,
+            photoUrl: files["Photo"][0].path,
+            resumeUrl: files["Resume"][0].path,
+            marksheet: files["Attach Original Marksheet"][0].path,
+        }
+        const newApplication = new ApplyModel(data);
+        await newApplication.save();
         console.log(data);
-        return res.status(200).json({message: "Your application is saved successfully!!"});
+        return res.status(200).json({ message: "Your application is saved successfully!!" });
     }
     catch (err) {
         console.log(err);
-        return res.status(500).json({error: ""})
+        return res.status(500).json({ error: "" })
     }
 });
 
