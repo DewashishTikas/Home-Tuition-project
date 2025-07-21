@@ -5,18 +5,21 @@ import cookieParser from "cookie-parser";
 import { verifyAdminToken } from "./middlewares/verifyToken.js";
 import adminRouter from "./routes/admin.js";
 import userRouter from "./routes/user.js";
-import mongoose from "mongoose";
+import { connectMongoServer } from "./database/config.js";
+import { filesBucket } from "./database/config.js";
+
 
 const app = express();
 const port = process.env.PORT || 8000;
 
-mongoose.connect(process.env.MONGODB_URL)
-    .then(() => console.log("DB is connected!!"));
+await connectMongoServer(process.env.MONGODB_URL);
+// console.log("my bucket", filesBucket);
+
 
 const corsOptions = {
     origin: (origin, callback) => {
         const originReg = /^http:\/\/192\.168\.[[:alnum:]]+\.[[:alnum:]]+:5173$/g;
-        if (originReg.test(origin)){
+        if (originReg.test(origin)) {
             return callback(null, true);
         }
         else {
@@ -32,10 +35,10 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/admin', verifyAdminToken, adminRouter);
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.send("server is live!!");
 });
 
-app.listen(port, ()=>{
-    console.log(`server is started in port ${port}!!`);
+app.listen(port, () => {
+    console.log(`server is listening on port ${port}!!`);
 });

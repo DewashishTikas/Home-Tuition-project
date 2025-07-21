@@ -70,7 +70,26 @@ router.post('/apply', uploadFiles(["Signature", "Photo", "Resume", "Attach Origi
     }
     catch (err) {
         console.log(err);
-        return res.status(500).json({ error: "" })
+        return res.status(500).json({ error: "Failed to save your application. Please try again later!!" });
+    }
+});
+
+router.post("/profile", uploadFiles("Resume"), (req, res) => {
+    try {
+        const formData = req.body;
+        const file = req.file;
+        const data = {
+            fullName: formData["Full Name"],
+            emailId: formData["Email"],
+            linkedInUrl: formData["LinkedIn URL"],
+            resumeUrl: file.path
+        }
+        console.log(data, file);
+        return res.status(200).json({message: data});
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(500).json({error: ""});
     }
 });
 
