@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./Components/Home";
 import "./App.css";
 import Layout from "./Components/Layout";
+import { UsersProfile } from "./Components/UsersProfile";
+import UserFormSubmitDetails from "./Components/UserFormSubmitDetails";
+import AdminMainPage from "./Components/AdminMainPage";
 
 const About = lazy(()=>import("./Components/About"));
 const Contact = lazy(()=>import("./Components/Contact"));
@@ -69,6 +72,21 @@ function App() {
       {
         path: "/adminPost",
         element: <AdminPost />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/usersProfile",
+        element: <UsersProfile />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/usersFormDetails",
+        element: <UserFormSubmitDetails />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/admin",
+        element: <AdminMainPage />,
         errorElement: <ErrorPage />,
       },
     ]); 
