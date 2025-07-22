@@ -48,6 +48,10 @@ const AdminPost = () => {
         },
         body: JSON.stringify({ post }),
       });
+      if (response.status === 403) {
+        console.log("Unauthorized access");
+        navigate("/adminLogin");
+      }
       setTimeout(() => {
         setMessage("");
       }, 5000);
@@ -72,6 +76,10 @@ const AdminPost = () => {
         },
         body: JSON.stringify({ vacancyId }),
       });
+      if (response.status === 403) {
+        console.log("Unauthorized access");
+        navigate("/adminLogin");
+      }
       const data = await response.json();
       if (response.status === 200)
         setMessage(data.message || "Vacancy Deleted Successfully");
@@ -83,6 +91,7 @@ const AdminPost = () => {
   return (
     <>
       <section className="w-4/5 mx-auto ">
+      <h1 className="text-center text-4xl font-bold my-6">Add or Remove Post</h1>
         <form
           className="my-10"
           onSubmit={(e) => {
