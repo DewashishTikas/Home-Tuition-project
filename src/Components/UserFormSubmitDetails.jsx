@@ -4,24 +4,27 @@ const UserFormSubmitDetails = () => {
   const [userDetails, setUserDetails] = useState([]);
   useEffect(() => {
     (async () => {
-      // await getAllUserDetails();
+      await getAllUserDetails();
     })();
   }, []);
   async function getAllUserDetails() {
-    const response = await fetch("/userForm");
-    if (response.status === 403) {
+    const response = await fetch("http://localhost:8000/admin/applications", {
+      credentials: "include"
+    });
+    if (response.status !== 200) {
       console.log("Unauthorized access");
       navigate("/adminLogin");
     }
     if (response.ok) {
-      const data = await response.json();
-      setUserDetails(data);
+      const { data: user } = await response.json();
+      setUserDetails(user);
     } else {
       console.log("Something went wrong");
     }
   }
   async function handleDelete(id) {
-    const response = await fetch("/deleteUserDetails", {
+    const response = await fetch("http://localhost:8000/admin/applications", {
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,7 +37,7 @@ const UserFormSubmitDetails = () => {
     }
     if (response.ok) {
       console.log("Deleted");
-      await getAllUserProfile();
+      await getAllUserDetails();
     }
   }
 
@@ -46,10 +49,10 @@ const UserFormSubmitDetails = () => {
           return (
             <div className="max-w-3/4  mx-auto bg-white rounded-2xl shadow-md p-6 border space-y-6">
               <div className="flex items-center">
-                {user.photo && (
+                {user.photoId && (
                   <div>
                     <img
-                      src={user.photo}
+                      src={`http://localhost:8000/admin/file/${user.photoId}`}
                       alt="User Photo"
                       className="w-24 h-24 object-cover rounded mt-2"
                     />
@@ -62,7 +65,7 @@ const UserFormSubmitDetails = () => {
                 <div
                   className="ml-auto mr-5 flex gap-3 cursor-pointer"
                   onClick={async () => {
-                    await handleDelete(id);
+                    await handleDelete(user._id);
                   }}
                 >
                   <FaTrash className="text-red-500 " size={24} />
@@ -81,13 +84,13 @@ const UserFormSubmitDetails = () => {
                     <strong>Mother:</strong> {user.motherName}
                   </div>
                   <div>
-                    <strong>DOB:</strong> {user.Dob}
+                    <strong>DOB:</strong> {user.DOB}
                   </div>
                   <div>
                     <strong>Category:</strong> {user.category}
                   </div>
                   <div>
-                    <strong>Domicile:</strong> {user.domicile}
+                    <strong>Domicile:</strong> {user.mpDomicile}
                   </div>
                   <div>
                     <strong>Qualification:</strong> {user.qualification}
@@ -101,13 +104,13 @@ const UserFormSubmitDetails = () => {
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-700">
                   <div>
-                    <strong>Mobile:</strong> {user.mobile}
+                    <strong>Mobile:</strong> {user.mobileNum}
                   </div>
                   <div>
-                    <strong>Alt Mobile:</strong> {user.mobileAlternative}
+                    <strong>Alt Mobile:</strong> {user.mobileNumAlt}
                   </div>
                   <div>
-                    <strong>Email:</strong> {user.email}
+                    <strong>Email:</strong> {user.emailId}
                   </div>
                   <div className="col-span-2">
                     <strong>Address:</strong> {user.address}
@@ -122,12 +125,12 @@ const UserFormSubmitDetails = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-700">
                   <div>
                     <strong>
-                      <a href={user.markSheet}>Marksheet</a>
+                      <a href={`http://localhost:8000/admin/file/${user.marksheetId}`}>Marksheet</a>
                     </strong>
                   </div>
                   <div>
                     <strong>
-                      <a href={user.resume}>Resume</a>
+                      <a href={`http://localhost:8000/admin/file/${user.resumeId}`}>Resume</a>
                     </strong>
                   </div>
 
@@ -135,7 +138,7 @@ const UserFormSubmitDetails = () => {
                     <div>
                       <strong>Signature:</strong>
                       <img
-                        src={user.signature}
+                        src={`http://localhost:8000/admin/file/${user.signatureId}`}
                         alt="Signature"
                         className="w-28 h-16 object-contain mt-2"
                       />

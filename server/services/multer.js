@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 });
 
 const fileStorage = mongoFileStorage({
-    destination: (req, file, cb) => {
+    mongoModel: (req, file, cb) => {
         cb(null, File);
     }
 });

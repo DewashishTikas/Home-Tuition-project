@@ -1,16 +1,19 @@
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const AdminMainPage = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     try {
       (async () => {
-        const response = await fetch("/profile");
-        if (response.status === 403) {
+        const response = await fetch("http://localhost:8000/admin", {
+          credentials: "include",
+        });
+        if (response.status !== 200) {
           console.log("Unauthorized access");
           navigate("/adminLogin");
         }
-      })();
+      })()
     } catch (err) {
       console.log(err);
     }

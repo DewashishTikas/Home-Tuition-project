@@ -10,21 +10,6 @@ const AdminPost = () => {
   const [message, setMessage] = useState("");
   const [vancancies, setVacancies] = useState([]);
   useEffect( () => {
-    try {
-      (async () => {
-        const response = await fetch("http://localhost:8000/admin", {
-          credentials: "include",
-        });
-        if (response.status !== 200) {
-          console.log("Unauthorized access");
-          navigate("/adminLogin");
-        }
-      })()
-    } catch (err) {
-      console.log(err);
-    }
-  },[]);
-  useEffect( () => {
     (async () => {
     try {
       const response = await fetch("http://localhost:8000/user/vacancy");

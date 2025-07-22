@@ -2,7 +2,8 @@ import express from "express";
 import VacancyModel from "../models/vacancy.js";
 import ContactModel from "../models/contact.js";
 import { uploadFiles } from "../middlewares/uploadFile.js";
-import ApplyModel from "../models/apply.js";
+import ApplyModel from "../models/applications.js";
+import ProfileModel from "../models/profile.js"
 
 const router = express.Router();
 
@@ -38,7 +39,7 @@ router.post('/contact', async (req, res) => {
     }
 });
 
-router.post('/apply', uploadFiles(["Signature", "Photo", "Resume", "Attach Original Marksheet"]), async (req, res) => {
+router.post('/applications', uploadFiles(["Signature", "Photo", "Resume", "Attach Original Marksheet"]), async (req, res) => {
     try {
         const formData = req.body;
         const files = req.files;
@@ -56,12 +57,12 @@ router.post('/apply', uploadFiles(["Signature", "Photo", "Resume", "Attach Origi
             mpDomicile: formData["MP Domicile"],
             address: formData["Address"],
             referenceName: formData["Reference Name"],
-            anyQuestion: formData["Any Question"],
-            selectedVacancy: formData["Selected Vacancy"],
-            signatureUrl: files["Signature"][0].path,
-            photoUrl: files["Photo"][0].path,
-            resumeUrl: files["Resume"][0].path,
-            marksheet: files["Attach Original Marksheet"][0].path,
+            question: formData["Any Question"],
+            post: formData["Selected Vacancy"],
+            signatureId: files["Signature"][0].id,
+            photoId: files["Photo"][0].id,
+            resumeId: files["Resume"][0].id,
+            marksheetId: files["Attach Original Marksheet"][0].id,
         }
         const newApplication = new ApplyModel(data);
         await newApplication.save();
@@ -74,22 +75,23 @@ router.post('/apply', uploadFiles(["Signature", "Photo", "Resume", "Attach Origi
     }
 });
 
-router.post("/profile", uploadFiles("Resume"), (req, res) => {
+router.post("/profile", uploadFiles("Resume"), async (req, res) => {
     try {
         const formData = req.body;
         const file = req.file;
         const data = {
-            fullName: formData["Full Name"],
-            emailId: formData["Email"],
+            userName: formData["Full Name"],
+            email: formData["Email"],
             linkedInUrl: formData["LinkedIn URL"],
-            resumeUrl: file.path
+            resumeId: file.id,
         }
-        console.log(data, file);
-        return res.status(200).json({message: data});
+        const newProfile = new ProfileModel(data);
+        await newProfile.save();
+        return res.status(200).json({message: "Your profile is saved successfully!!"});
     }
     catch (err) {
         console.log(err);
-        return res.status(500).json({error: ""});
+        return res.status(500).json({error: "Failed to save profile info. Please try again!!"});
     }
 });
 

@@ -5,12 +5,14 @@ export const UsersProfile = () => {
   const [userProfileData, setUserProfileData] = useState([]);
 
   async function getAllUserProfile() {
-    const response = await fetch("/getAllUserData");
+    const response = await fetch("http://localhost:8000/admin/profile", {
+      credentials: "include"
+    });
     if (response.status === 403) {
       console.log("Unauthorized access");
       navigate("/adminLogin");
     }
-    const data = await response.json();
+    const { data } = await response.json();
     if (response.ok) {
       setUserProfileData(data);
     } else {
@@ -18,7 +20,8 @@ export const UsersProfile = () => {
     }
   }
   async function handleDelete(id) {
-    const response = await fetch("/deleteUserProfile", {
+    const response = await fetch("http://localhost:8000/admin/profile", {
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -67,11 +70,11 @@ export const UsersProfile = () => {
         <tbody>
           {userProfileData.map(
             ({
-              id,
-              name: userName,
+              _id: id,
+              userName,
               email,
               phoneNo,
-              linkedinUrl,
+              linkedInUrl,
               resumeUrl,
             }) => {
               return (
@@ -98,7 +101,7 @@ export const UsersProfile = () => {
                     <a
                       target="_blank"
                       className="flex justify-center"
-                      href={linkedinUrl}
+                      href={linkedInUrl}
                     >
                       <MdLink />
                     </a>

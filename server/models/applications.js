@@ -14,12 +14,12 @@ const applySchema = new Schema({
     mpDomicile: { type: String, require: true },
     address: { type: String, require: true },
     referenceName: { type: String, require: false },
-    anyQuestion: { type: String, require: true },
-    selectedVacancy: { type: String, require: true },
-    signatureUrl: { type: String, require: true },
-    photoUrl: { type: String, require: true },
-    resumeUrl: { type: String, require: true },
-    marksheet: { type: String, require: true },
+    question: { type: String, require: true },
+    post: { type: String, require: true },
+    signatureId: { type: String, require: true },
+    photoId: { type: String, require: true },
+    resumeId: { type: String, require: true },
+    marksheetId: { type: String, require: true },
 });
 
-export default models['Apply'] || model('Apply', applySchema);
+export default models['Applications'] || model('Applications', applySchema);

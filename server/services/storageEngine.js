@@ -10,7 +10,7 @@ class writeMongoFile extends Writable {
     }
 
     _write(chunk, encoding, callback) {
-        if(encoding != "buffer") callback(new Error("Chunk should be of type buffer!!"))
+        if (encoding != "buffer") callback(new Error("Chunk should be of type buffer!!"))
         this.bufferData = Buffer.concat([this.bufferData, chunk]);
         callback();
     }
@@ -30,29 +30,47 @@ class writeMongoFile extends Writable {
 }
 
 function MongoFileStorageEngine(opts) {
-    this.getDestination = opts.destination;
+    this.getDestination = opts.mongoModel;
 }
 
 MongoFileStorageEngine.prototype._handleFile = function _handleFile(req, file, cb) {
-    this.getDestination(req, file, function (err, bucket) {
+    this.getDestination(req, file, function (err, model) {
         if (err) return cb(err);
 
-        // const outStream = bucket.openUploadStream(file.originalname);
-        const outStream = new writeMongoFile({ model: bucket })
+        try {
 
-        file.stream.pipe(outStream);
-        outStream.on('error', cb);
-        outStream.on('finish', function () {
-            cb(null, {
-                id: outStream.docId,
-                size: outStream.dataSize,
+            // const outStream = bucket.openUploadStream(file.originalname);
+            const outStream = new writeMongoFile({ model: model })
+
+            file.stream.pipe(outStream);
+            outStream.on('error', cb);
+            outStream.on('finish', function () {
+                cb(null, {
+                    id: outStream.docId,
+                    size: outStream.dataSize,
+                });
             });
-        });
+        }
+        catch (err) {
+            console.error(err);
+            cb(err);
+        }
     });
 }
 
 MongoFileStorageEngine.prototype._removeFile = function _removeFile(req, file, cb) {
+    this.getDestination(req, file, function (err, model) {
+        if(err) return cb(err);
 
+        try {
+            model.findByIdAndDelete(file.id);
+            cb();
+        }
+        catch (err) {
+            console.error(err);
+            cb(err);
+        }
+    });
 }
 
 function mongoFileStorage(opts) {
