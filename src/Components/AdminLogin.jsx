@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import InputComp from "./InputComp";
-import Button from "./Button";
 import { useNavigate } from "react-router";
 
 const AdminLogin = () => {
@@ -18,9 +17,8 @@ const AdminLogin = () => {
         },
         body: JSON.stringify({ adminUserName, adminPass }),
       });
-      const data = await response.json();
       if (response.status === 200) {
-        navigate("/adminPost");
+        navigate("/admin");
       } else {
         navigate("/");
       }
