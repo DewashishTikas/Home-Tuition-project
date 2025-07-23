@@ -125,7 +125,6 @@ router.delete("/applications", async (req, res) => {
 router.get("/file/:id", async (req, res) => {
     try {
         const fileId = req.params.id;
-        if(fileId == "undefined") return res.status(400).json("Invalid file id!!");
         const readStream = FileModel.findById(fileId).cursor({
             transform: (doc) => {
                 return doc.bufferData;
@@ -134,11 +133,16 @@ router.get("/file/:id", async (req, res) => {
         readStream.on("data", (doc) => {
             console.log(doc.id);
         });
+        readStream.on("error", async (err) => {
+            console.log(err);
+            await readStream.close();
+            return res.status(500).json({ error: "Failed to server requested file!!" });
+        });
         readStream.pipe(res);
 }
     catch (err) {
     console.log(err);
-    res.status(500).json({ error: "Failed to server requested file!!" });
+    return res.status(500).json({ error: "Failed to server requested file!!" });
 }
 });
 export default router;

@@ -5,7 +5,7 @@ export const UsersProfile = () => {
   const [userProfileData, setUserProfileData] = useState([]);
 
   async function getAllUserProfile() {
-    const response = await fetch("http://localhost:8000/admin/profile", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/profile`, {
       credentials: "include"
     });
     if (response.status === 403) {
@@ -15,12 +15,13 @@ export const UsersProfile = () => {
     const { data } = await response.json();
     if (response.ok) {
       setUserProfileData(data);
+      console.log(data);
     } else {
       console.log("Something went wrong");
     }
   }
   async function handleDelete(id) {
-    const response = await fetch("http://localhost:8000/admin/profile", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/profile`, {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +76,7 @@ export const UsersProfile = () => {
               email,
               phoneNo,
               linkedInUrl,
-              resumeUrl,
+              resumeId,
             }) => {
               return (
                 <tr className="bg-blue-200 hover:bg-blue-300" key={id}>
@@ -92,7 +93,7 @@ export const UsersProfile = () => {
                     <a
                       target="_blank"
                       className="flex justify-center"
-                      href={resumeUrl}
+                      href={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${resumeId}`}
                     >
                       <MdLink />
                     </a>

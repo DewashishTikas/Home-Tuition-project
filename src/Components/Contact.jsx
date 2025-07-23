@@ -37,7 +37,7 @@ const Contact = () => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:8000/user/contact", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

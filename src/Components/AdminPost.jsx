@@ -12,7 +12,7 @@ const AdminPost = () => {
   useEffect( () => {
     (async () => {
     try {
-      const response = await fetch("http://localhost:8000/user/vacancy");
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/vacancy`);
       const { data } = await response.json();
      
       setVacancies(data);
@@ -25,7 +25,7 @@ const AdminPost = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/admin/vacancy", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/vacancy`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -53,7 +53,7 @@ const AdminPost = () => {
 
   async function handleDelete(vacancyId) {
     try {
-      const response = await fetch("http://localhost:8000/admin/vacancy", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/vacancy`, {
         method: "DELETE",
         credentials: "include",
         headers: {

@@ -10,7 +10,7 @@ const AdminLogin = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/admin/login", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/login`, {
         method: "POST",
         credentials: "include",
         headers: {

@@ -8,7 +8,7 @@ const UserFormSubmitDetails = () => {
     })();
   }, []);
   async function getAllUserDetails() {
-    const response = await fetch("http://localhost:8000/admin/applications", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/applications`, {
       credentials: "include"
     });
     if (response.status !== 200) {
@@ -23,7 +23,7 @@ const UserFormSubmitDetails = () => {
     }
   }
   async function handleDelete(id) {
-    const response = await fetch("http://localhost:8000/admin/applications", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/applications`, {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const UserFormSubmitDetails = () => {
                 {user.photoId && (
                   <div>
                     <img
-                      src={`http://localhost:8000/admin/file/${user.photoId}`}
+                      src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.photoId}`}
                       alt="User Photo"
                       className="w-24 h-24 object-cover rounded mt-2"
                     />
@@ -125,12 +125,12 @@ const UserFormSubmitDetails = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-700">
                   <div>
                     <strong>
-                      <a href={`http://localhost:8000/admin/file/${user.marksheetId}`}>Marksheet</a>
+                      <a href={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.marksheetId}`}>Marksheet</a>
                     </strong>
                   </div>
                   <div>
                     <strong>
-                      <a href={`http://localhost:8000/admin/file/${user.resumeId}`}>Resume</a>
+                      <a href={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.resumeId}`}>Resume</a>
                     </strong>
                   </div>
 
@@ -138,7 +138,7 @@ const UserFormSubmitDetails = () => {
                     <div>
                       <strong>Signature:</strong>
                       <img
-                        src={`http://localhost:8000/admin/file/${user.signatureId}`}
+                        src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.signatureId}`}
                         alt="Signature"
                         className="w-28 h-16 object-contain mt-2"
                       />

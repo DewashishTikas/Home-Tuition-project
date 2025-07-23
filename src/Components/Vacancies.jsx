@@ -10,7 +10,7 @@ export default function VacancySelector() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:8000/user/vacancy"); 
+        const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/vacancy`); 
         const { data } = await response.json();
         setVacancies(data);
       } catch (error) {

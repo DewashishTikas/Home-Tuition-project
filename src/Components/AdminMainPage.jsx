@@ -6,7 +6,7 @@ const AdminMainPage = () => {
   useEffect(() => {
     try {
       (async () => {
-        const response = await fetch("http://localhost:8000/admin", {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin`, {
           credentials: "include",
         });
         if (response.status !== 200) {
