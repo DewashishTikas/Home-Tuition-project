@@ -18,8 +18,8 @@ const storage = multer.diskStorage({
 const fileStorage = mongoFileStorage({
     mongoModel: (req, file, cb) => {
         cb(null, File);
-    }
+    },
 });
 
-const upload = multer({ storage: fileStorage });
+const upload = multer({ storage: fileStorage, limits: { fileSize: 1048576 } });
 export default upload;

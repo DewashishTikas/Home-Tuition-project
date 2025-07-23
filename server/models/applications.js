@@ -20,6 +20,6 @@ const applySchema = new Schema({
     photoId: { type: String, require: true },
     resumeId: { type: String, require: true },
     marksheetId: { type: String, require: true },
-});
+}, { timestamps: true });
 
 export default models['Applications'] || model('Applications', applySchema);

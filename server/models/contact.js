@@ -7,6 +7,6 @@ const contactSchema = new Schema({
     phoneno: { type: String, require: true },
     email: { type: String, require: true },
     message: { type: String, require: true },
-});
+}, { timestamps: true });
 
 export default models['Contact'] || model('Contact', contactSchema);

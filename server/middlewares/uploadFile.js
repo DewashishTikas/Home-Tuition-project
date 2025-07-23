@@ -17,12 +17,13 @@ export const uploadFiles = (fieldNames) => {
         return (req, res, next) => {
               upload(req, res, (err)=>{
                 if(err instanceof MulterError){
-                    console.error("multer error:/n", err);
-                    return res.status(500).json({message: 'Failed to save uploaded files. Please try agian later!!'});
+                    console.error("MulterError:\n", err);
+                    if(err.code == "LIMIT_FILE_SIZE") return res.status(400).json({error: "File is too large!!"})
+                    return res.status(500).json({error: 'Failed to save uploaded files. Please try agian later!!'});
                 }
                 else if (err) {
-                    console.error("unknown error:/n", err);
-                    return res.status(500).json({message: 'Failed to save uploaded files. Please try agian later!!'});
+                    console.error("unknown error:\n", err);
+                    return res.status(500).json({error: 'Failed to save uploaded files. Please try agian later!!'});
                 }
                 next();
               })

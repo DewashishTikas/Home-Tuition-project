@@ -8,6 +8,6 @@ const profileSchema = new Schema({
     resumeId: {type: String, require: true},
     linkedInUrl: {type: String, require: false},
     phoneNo: {type: String, require: true},
-});
+}, { timestamps: true });
 
 export default models["Profile"] || model("Profile", profileSchema);

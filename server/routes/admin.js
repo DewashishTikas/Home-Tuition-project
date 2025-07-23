@@ -126,16 +126,14 @@ router.get("/file/:id", async (req, res) => {
     try {
         const fileId = req.params.id;
         if(fileId == "undefined") return res.status(400).json("Invalid file id!!");
-        console.log(!fileId);
-        console.log(!fileId);
         const readStream = FileModel.findById(fileId).cursor({
             transform: (doc) => {
                 return doc.bufferData;
             }
         });
         readStream.on("data", (doc) => {
-            console.log(doc);
-        })
+            console.log(doc.id);
+        });
         readStream.pipe(res);
 }
     catch (err) {
