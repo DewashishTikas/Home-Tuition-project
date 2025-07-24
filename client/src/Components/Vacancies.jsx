@@ -8,16 +8,15 @@ export default function VacancySelector() {
     const [selectedVacancy, setSelectedVacancy] = useContext(FormVacancyContext);
     const navigate = useNavigate()
   useEffect(() => {
-    // (async () => {
-    //   try {
-    //     const response = await fetch("/api/vacancies"); 
-    //     const data = await response.json();
-    //     setVacancies(data);
-    //   } catch (error) {
-    //     console.error("Error fetching vacancies:", error);
-    //   }
-    // })();
-    setVacancies([{ name: "Job2", id: "123" }]);
+    (async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/vacancy`); 
+        const { data } = await response.json();
+        setVacancies(data);
+      } catch (error) {
+        console.error("Error fetching vacancies:", error);
+      }
+    })();
   }, []);
 
   const handleSubmit = (e) => {

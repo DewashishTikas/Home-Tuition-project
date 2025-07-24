@@ -17,7 +17,7 @@ export default function Services() {
         </h1>
       </div>
       <div className="max-w-4/5 rounded-xl mx-auto relative shadow-2xl mb-20 px-10 py-0.5 bg-white">
-        <form action="/addProfile" method="post">
+        <form action={`${import.meta.env.VITE_SERVER_BASE_URL}/user/profile`} method="post" encType="multipart/form-data">
           <InputComp type={"text"}>Full Name</InputComp>
           <InputComp type={"email"}>Email</InputComp>
           <div className="my-5">

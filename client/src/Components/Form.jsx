@@ -42,7 +42,7 @@ export default function Form() {
     formData.append("Selected Vacancy", selectedVacancy);
 
     try {
-      const response = await fetch("/formSubmit", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/applications`, {
         method: "POST",
         body: formData,
       });
