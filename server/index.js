@@ -6,14 +6,12 @@ import { verifyAdminToken } from "./middlewares/verifyToken.js";
 import adminRouter from "./routes/admin.js";
 import userRouter from "./routes/user.js";
 import { connectMongoServer } from "./database/config.js";
-import { filesBucket } from "./database/config.js";
 
 
 const app = express();
 const port = process.env.PORT || 8000;
 
 await connectMongoServer(process.env.MONGODB_URL);
-// console.log("my bucket", filesBucket);
 
 
 const corsOptions = {

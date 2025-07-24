@@ -4,6 +4,9 @@ export const connectMongoServer = async (url) => {
     const conn = await mongoose.connect(url)
         .then(() => {
             console.log("MongoDB server is connected!!");
+        })
+        .catch((err) => {
+            console.error(err);
         });
     return conn;
 }
