@@ -23,7 +23,6 @@ const AdminPost = () => {
   }, []);
 
   async function handleSubmit(e) {
-    debugger
    e.preventDefault();
     try {
       const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/vacancy`, {
