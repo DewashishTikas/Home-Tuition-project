@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputComp from "./InputComp";
+import InputComp from "../Components/InputComp";
 import { useNavigate } from "react-router";
 
 const AdminLogin = () => {

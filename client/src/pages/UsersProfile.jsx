@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import { MdDelete, MdLink } from "react-icons/md";
+import {  MdLink } from "react-icons/md";
 export const UsersProfile = () => {
   const [userProfileData, setUserProfileData] = useState([]);
 
