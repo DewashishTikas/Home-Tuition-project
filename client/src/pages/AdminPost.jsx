@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import InputComp from "./InputComp";
+import InputComp from "../Components/InputComp";
 import deleteIcon from "../assets/images/deleteicon.svg";
-import Button from "./Button";
+import Button from "../Components/Button";
 import { useNavigate } from "react-router";
 
 const AdminPost = () => {

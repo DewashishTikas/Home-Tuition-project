@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import Button from "./Button";
-import Carousal from "./Carousal";
+import Button from "../Components/Button";
+import Carousal from "../Components/Carousal";
 import { useOutletContext } from "react-router";
 import book from "../assets/images/booktutor.jpg";
 import labour from "../assets/images/labour.jpg";

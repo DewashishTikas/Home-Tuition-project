@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputComp from "./InputComp";
+import InputComp from "../Components/InputComp";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 

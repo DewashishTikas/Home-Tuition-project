@@ -3,7 +3,7 @@ import aboutBg from "../assets/images/aboutbg.png";
 import about from "../assets/images/about.png";
 import person1 from "../assets/images/person1.png";
 import person2 from "../assets/images/person2.jpeg";
-import PeopleBiography from "./PeopleBiography";
+import PeopleBiography from "../Components/PeopleBiography";
 
 const About = () => {
   return (

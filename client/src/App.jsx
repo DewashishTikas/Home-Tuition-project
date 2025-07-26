@@ -1,22 +1,22 @@
 import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Home from "./Components/Home";
+import Home from "./pages/Home";
 import "./App.css";
 import Layout from "./Components/Layout";
-import { UsersProfile } from "./Components/UsersProfile";
-import UserFormSubmitDetails from "./Components/UserFormSubmitDetails";
-import AdminMainPage from "./Components/AdminMainPage";
+import { UsersProfile } from "./pages/UsersProfile";
+import UserFormSubmitDetails from "./pages/UserFormSubmitDetails";
+import AdminMainPage from "./pages/AdminMainPage";
 
-const About = lazy(()=>import("./Components/About"));
-const Contact = lazy(()=>import("./Components/Contact"));
+const About = lazy(()=>import("./pages/About"));
+const Contact = lazy(()=>import("./pages/Contact"));
 const ErrorPage = lazy(()=>import("./Components/ErrorPage"));
-const Vacancies = lazy(() => import("./Components/Vacancies"));
-const Form = lazy(()=>import("./Components/Form"));
-const Services = lazy(()=>import("./Components/Services"));
-const Career = lazy(()=>import("./Components/Career"));
+const Vacancies = lazy(() => import("./pages/Vacancies"));
+const Form = lazy(() => import("./Components/Form"));
+const Services = lazy(()=>import("./pages/Services"));
+const Career = lazy(()=>import("./pages/Career"));
 const Terms = lazy(()=>import("./Components/Terms"));
-const AdminLogin = lazy(() => import("./Components/AdminLogin"));
-const AdminPost = lazy(() => import("./Components/AdminPost"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminPost = lazy(() => import("./pages/AdminPost"));
 
 
 function App() {

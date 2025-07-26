@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import Button from "./Button";
+import Button from "../Components/Button";
 import { FormVacancyContext } from "../../contexts/formVacanciesContext";
 import { useNavigate } from "react-router";
 
