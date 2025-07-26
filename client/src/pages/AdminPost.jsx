@@ -13,17 +13,18 @@ const AdminPost = () => {
     (async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/vacancy`);
-      const { data } = await response.json();
-     
+      const data = await response.json();
+     if(data.error )return;
       setVacancies(data);
     } catch (err) {
       console.log(err);
     }
     })();
-  }, [post]);
+  }, []);
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    debugger
+   e.preventDefault();
     try {
       const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/vacancy`, {
         method: "POST",
@@ -76,7 +77,9 @@ const AdminPost = () => {
   return (
     <>
       <section className="w-4/5 mx-auto ">
-      <h1 className="text-center text-4xl font-bold my-6">Add or Remove Post</h1>
+        <h1 className="text-center text-4xl font-bold my-6">
+          Add or Remove Post
+        </h1>
         <form
           className="my-10"
           onSubmit={(e) => {
@@ -86,12 +89,12 @@ const AdminPost = () => {
           <InputComp value={post} setValue={setPost} type={"text"}>
             Enter Post
           </InputComp>
-          <Button css="my-5">Add</Button>
+          <button className="bg-blue-500 text-white px-4 py-2 my-5 rounded-md">Add</button>
         </form>
         {message && <p>{message}</p>}
         <div className="mt-10">
           <h1 className="text-2xl my-3">Vacancies</h1>
-          {vancancies.map((vacancy) => {
+          {!!vancancies.length && vancancies.map((vacancy) => {
             return (
               <>
                 <div className="flex justify-between text-lg" key={vacancy.id}>

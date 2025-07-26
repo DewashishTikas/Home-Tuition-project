@@ -12,7 +12,9 @@ export default function VacancySelector() {
       try {
         const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/user/vacancy`); 
         const { data } = await response.json();
+        if(response.error) return ;
         setVacancies(data);
+        console.log(vacancies.length);
       } catch (error) {
         console.error("Error fetching vacancies:", error);
       }
@@ -38,7 +40,7 @@ export default function VacancySelector() {
         >
           <div>
             {" "}
-            {vacancies.map((vacancy) => (
+            {vacancies.length && vacancies.map((vacancy) => (
               <label
                 key={vacancy.id}
                 className="flex items-center space-x-2 text-xl"
