@@ -169,9 +169,9 @@ const Contact = () => {
 
               <div>
                 <button
-                  className={`bg-blue-500 text-white text-lg px-6 py-2 rounded hover:bg-blue-800 transition ${
+                  className={`bg-blue-500 text-white text-lg px-6 py-2 rounded hover:bg-blue-800 cursor-pointer  ${
                     submitted ? "bg-green-500 pointer-events-none" : ""
-                  } duration-700 `}
+                  } transition duration-700 `}
                 >
                   {submitted ? "Submitted Successfully" : "Submit"}
                 </button>

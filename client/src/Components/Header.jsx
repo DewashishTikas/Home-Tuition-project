@@ -70,7 +70,11 @@ const Header = ({ Ypos }) => {
             </ul>
           </div>
           <div className="block lg:hidden">
-            <button onClick={toogleMenu} aria-label="hamburger ">
+            <button
+              onClick={toogleMenu}
+              aria-label="hamburger "
+              className="cursor-pointer"
+            >
               {isOpen ? (
                 <IoIosClose
                   size={36}

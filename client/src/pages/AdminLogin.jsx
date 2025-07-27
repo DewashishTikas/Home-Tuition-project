@@ -47,10 +47,9 @@ const AdminLogin = () => {
           >
             Password
           </InputComp>
-          <button className=" bg-red-500 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
+          <button className="cursor-pointer  bg-red-500 py-2 px-4 rounded flex items-center justify-center mx-auto my-5 text-white ">
             Submit
           </button>
-
         </form>
       </div>
     </div>

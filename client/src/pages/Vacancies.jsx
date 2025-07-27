@@ -40,7 +40,7 @@ export default function VacancySelector() {
         >
           <div>
             {" "}
-            {vacancies.length && vacancies.map((vacancy) => (
+            {!!vacancies.length && vacancies.map((vacancy) => (
               <label
                 key={vacancy.id}
                 className="flex items-center space-x-2 text-xl"

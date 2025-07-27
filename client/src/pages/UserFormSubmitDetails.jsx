@@ -52,7 +52,9 @@ const UserFormSubmitDetails = () => {
                 {user.photoId && (
                   <div>
                     <img
-                      src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.photoId}`}
+                      src={`${
+                        import.meta.env.VITE_SERVER_BASE_URL
+                      }/admin/file/${user.photoId}`}
                       alt="User Photo"
                       className="w-24 h-24 object-cover rounded mt-2"
                     />
@@ -125,20 +127,34 @@ const UserFormSubmitDetails = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-700">
                   <div>
                     <strong>
-                      <a href={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.marksheetId}`}>Marksheet</a>
+                      <a
+                        href={`${
+                          import.meta.env.VITE_SERVER_BASE_URL
+                        }/admin/file/${user.marksheetId}`}
+                      >
+                        Marksheet
+                      </a>
                     </strong>
                   </div>
                   <div>
                     <strong>
-                      <a href={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.resumeId}`}>Resume</a>
+                      <a
+                        href={`${
+                          import.meta.env.VITE_SERVER_BASE_URL
+                        }/admin/file/${user.resumeId}`}
+                      >
+                        Resume
+                      </a>
                     </strong>
                   </div>
 
-                  {user.signature && (
+                  {user.signatureId && (
                     <div>
                       <strong>Signature:</strong>
                       <img
-                        src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${user.signatureId}`}
+                        src={`${
+                          import.meta.env.VITE_SERVER_BASE_URL
+                        }/admin/file/${user.signatureId}`}
                         alt="Signature"
                         className="w-28 h-16 object-contain mt-2"
                       />

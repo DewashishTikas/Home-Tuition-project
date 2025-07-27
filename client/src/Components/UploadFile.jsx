@@ -49,7 +49,7 @@ export default function UploadFile({ name, value, setValue }) {
   };
   return (
     <>
-      <p>{name+'*'}</p>
+      <p>{name + "*"}</p>
       <div className="max-w-md mx-auto">
         <label
           htmlFor={name}
@@ -123,7 +123,7 @@ export default function UploadFile({ name, value, setValue }) {
           <div className="mt-4 flex justify-center">
             <button
               onClick={handleRemove}
-              className="text-red-500 hover:text-red-700 text-sm underline"
+              className="text-red-500 transition duration-700 cursor-pointer hover:text-red-700 text-sm underline"
             >
               Remove file
             </button>

@@ -4,7 +4,30 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 export default function Services() {
-  const [name, setName] = useState("");
+  const [message,setMessage] = useState("")
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target
+    const formData = new FormData(form)
+
+    const phoneno = e.target[3].value
+    formData.append("phoneNo", phoneno)
+    const response = await fetch(
+      `${import.meta.env.VITE_SERVER_BASE_URL}/user/profile`,
+      {
+        method: "POST",
+        body:formData
+      }
+    );
+    const data = await response.json()
+    if(data.error){
+     return console.log("Something went wrong");
+    }
+      setMessage("Profile added successfully")
+    setTimeout(() => {
+      setMessage("")
+    }, 5000);
+  }
   const [phone, setPhone] = useState("");
   return (
     <>
@@ -17,7 +40,12 @@ export default function Services() {
         </h1>
       </div>
       <div className="max-w-4/5 rounded-xl mx-auto relative shadow-2xl mb-20 px-10 py-0.5 bg-white">
-        <form action={`${import.meta.env.VITE_SERVER_BASE_URL}/user/profile`} method="post" encType="multipart/form-data">
+        <form
+          onSubmit={async (e) => {
+            await handleSubmit(e);
+          }}
+          encType="multipart/form-data"
+        >
           <InputComp type={"text"}>Full Name</InputComp>
           <InputComp type={"email"}>Email</InputComp>
           <div className="my-5">
@@ -38,9 +66,11 @@ export default function Services() {
           <div className="my-10 text-center mx-auto w-max">
             <button
               tabIndex={-1}
-              className={`font-semibold md:text-lg md:px-8 md:py-2 px-4 py-1 text-base bg-blue-400 rounded flex items-center justify-center text-white `}
+              className={`cursor-pointer transition duration-700 font-semibold md:text-lg md:px-8 md:py-2 px-4 py-1  text-base ${
+                !message ? "bg-blue-400" : "bg-green-400"
+              } rounded flex items-center justify-center text-white cursor-pointer`}
             >
-              Add
+              {!message ? "Add Profile" : message}
             </button>
           </div>
         </form>
