@@ -1,11 +1,19 @@
 import React, { useRef, useState } from "react";
 
-export default function UploadFile({ name, value, setValue }) {
+export default function UploadFile({ name, value, setValue, }) {
   const [preview, setPreview] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef();
+  const[message,setMessage] = useState()
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
+    if(message){
+setMessage("")
+    }
+    if(uploadedFile.size > 1024*1024) {
+      setMessage("File size must be less than 1MB");
+      return;
+    }
     if (uploadedFile) {
       setValue(uploadedFile);
       if (
@@ -24,6 +32,10 @@ export default function UploadFile({ name, value, setValue }) {
     e.stopPropagation();
     setDragActive(false);
     const droppedFile = e.dataTransfer.files?.[0];
+        if (droppedFile.size > 1024 * 1024) {
+          setMessage("File size must be less than 1MB");
+          return;
+        }
     if (droppedFile) {
       const dataTransfer = new DataTransfer();
       dataTransfer.items.add(droppedFile);
@@ -63,6 +75,7 @@ export default function UploadFile({ name, value, setValue }) {
           onDragOver={handleDrag}
           onDrop={handleDrop}
         >
+          {message}
           <input
             required
             name={name}

@@ -4,28 +4,39 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 export default function Services() {
-  const [message,setMessage] = useState("")
+  const [message, setMessage] = useState("");
+  const [fileSizeError,setFileSizeError] = useState("")
   async function handleSubmit(e) {
     e.preventDefault();
-    const form = e.target
-    const formData = new FormData(form)
+    const form = e.target;
+    console.log(form[4].files[0].size);
+    if (form[4].files[0].size > 1024 * 1024) {
+      setFileSizeError(
+        "The file size is too large. Kindly give the file upto 1 MB size"
+      );
+          setTimeout(() => {
+            setFileSizeError("");
+          }, 5000);
+      return;
+    }
+    const formData = new FormData(form);
 
-    const phoneno = e.target[3].value
-    formData.append("phoneNo", phoneno)
+    const phoneno = e.target[3].value;
+    formData.append("phoneNo", phoneno);
     const response = await fetch(
       `${import.meta.env.VITE_SERVER_BASE_URL}/user/profile`,
       {
         method: "POST",
-        body:formData
+        body: formData,
       }
     );
-    const data = await response.json()
-    if(data.error){
-     return console.log("Something went wrong");
+    const data = await response.json();
+    if (data.error) {
+      return console.log("Something went wrong");
     }
-      setMessage("Profile added successfully")
+    setMessage("Profile added successfully");
     setTimeout(() => {
-      setMessage("")
+      setMessage("");
     }, 5000);
   }
   const [phone, setPhone] = useState("");
@@ -46,7 +57,7 @@ export default function Services() {
           }}
           encType="multipart/form-data"
         >
-          <InputComp type={"text"}>Full Name</InputComp>
+          <InputComp type={"text"} >Full Name</InputComp>
           <InputComp type={"email"}>Email</InputComp>
           <div className="my-5">
             <label>Contact No.</label>
@@ -60,7 +71,13 @@ export default function Services() {
             />
           </div>
           <InputComp type={"file"}>Resume</InputComp>
-          <InputComp type={"url"} notrequired={"true"}>
+          <p className="text-red text-xs">{fileSizeError}</p>
+          <InputComp
+            type={"url"}
+            notrequired={"true"}
+            pattern=".*linkedin\.com.*"
+            title="Enter a valid LinkedIn profile URL"
+          >
             LinkedIn URL
           </InputComp>
           <div className="my-10 text-center mx-auto w-max">

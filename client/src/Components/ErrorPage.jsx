@@ -10,7 +10,7 @@ export default function ErrorPage() {
       <p className="text-xl mb-2">Sorry, an unexpected error has occurred.</p>
       {error?.statusText || error?.message ? (
         <p className="text-gray-700 italic">
-          {error.statusText || error.message}
+          Something went wrong .Contact the Developer
         </p>
       ) : null}
       <a href="/" className="mt-6 text-blue-500 underline hover:text-blue-700">
