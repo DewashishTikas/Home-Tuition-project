@@ -15,9 +15,7 @@ export default function InputComp({
   const inputValue = isControlled ? value : internalValue;
   const handleChange = (e)=>{
     isControlled ? setValue(e.target.value) : setInternalValue(e.target.value);
-
   }
- 
   return (
     <>
       <label

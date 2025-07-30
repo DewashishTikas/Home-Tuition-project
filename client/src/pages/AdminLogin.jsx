@@ -5,8 +5,8 @@ import { useNavigate } from "react-router";
 import { useTransition } from "react";
 
 const AdminLogin = () => {
-  const [adminUserName, setAdminUserName] = useState();
-  const [adminPass, setAdminPass] = useState();
+  const [adminUserName, setAdminUserName] = useState("");
+  const [adminPass, setAdminPass] = useState("");
   const [isPending,startTransition] = useTransition()
   const navigate = useNavigate();
   async function handleSubmit(e) {
