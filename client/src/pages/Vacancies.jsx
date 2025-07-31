@@ -50,7 +50,6 @@ export default function VacancySelector() {
   }
   return (
     <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-xl shadow-md h-[100vh] ">
-   (
         <div className=" h-full ">
           <h2 className="text-4xl font-bold mb-4">Select a Vacancy</h2>
           {!!vacancies.length ? (
@@ -65,7 +64,6 @@ export default function VacancySelector() {
             className="space-y-4 flex flex-col justify-between h-full"
           >
             <div>
-              {" "}
               {!!vacancies.length &&
                 vacancies.map((vacancy) => (
                   <label
@@ -89,7 +87,6 @@ export default function VacancySelector() {
             </Button>
           </form>
         </div>
-      )
     </div>
   );
 }

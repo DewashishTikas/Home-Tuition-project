@@ -87,7 +87,7 @@ export default function Services() {
                 !message ? "bg-blue-400" : "bg-green-400"
               } rounded flex items-center justify-center text-white cursor-pointer`}
             >
-              {!message ? "Add Profile" : message}
+              {!message ? "Add Profile" : "Profile Added"}
             </button>
           </div>
         </form>

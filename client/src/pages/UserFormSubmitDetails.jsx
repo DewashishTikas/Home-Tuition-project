@@ -45,7 +45,7 @@ const UserFormSubmitDetails = () => {
     const response = await fetch(
       `${import.meta.env.VITE_SERVER_BASE_URL}/admin/applications`,
       {
-        credentials: "include",     
+        credentials: "include",
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -94,21 +94,23 @@ const UserFormSubmitDetails = () => {
       {userDetails.map((user) => (
         <div
           key={user._id}
-          className="max-w-3/4 mx-auto bg-white rounded-2xl shadow-md p-6 border space-y-6"
+          className="sm:max-w-3/4 mx-auto bg-white rounded-2xl shadow-md p-6 border space-y-6"
         >
           <div className="flex items-center">
-            {user.photoId && (
-              <img
-                src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${
-                  user.photoId
-                }`}
-                alt="User Photo"
-                className="w-24 h-24 object-cover rounded mt-2"
-              />
-            )}
-            <div className="mx-20">
-              <h2 className="text-3xl font-bold">{user.name}</h2>
-              <p className="text-gray-600 text-sm">{user.post}</p>
+            <div className="flex items-start sm:items-center sm:flex-row flex-col justify-items-center">
+              {user.photoId && (
+                <img
+                  src={`${import.meta.env.VITE_SERVER_BASE_URL}/admin/file/${
+                    user.photoId
+                  }`}
+                  alt="User Photo"
+                  className="w-24 h-24 object-cover rounded mt-2"
+                />
+              )}
+              <div className="sm:mx-20 mt-3">
+                <h2 className="text-3xl font-bold">{user.name}</h2>
+                <p className="text-gray-600 text-sm">{user.post}</p>
+              </div>
             </div>
             <div
               className="ml-auto mr-5 flex gap-3 cursor-pointer"
