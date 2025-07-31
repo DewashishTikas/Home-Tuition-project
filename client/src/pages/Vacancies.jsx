@@ -49,44 +49,50 @@ export default function VacancySelector() {
     );
   }
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-xl shadow-md h-[100vh] ">
-        <div className=" h-full ">
-          <h2 className="text-4xl font-bold mb-4">Select a Vacancy</h2>
-          {!!vacancies.length ? (
-            <p className="text-xl text-gray-600">
-              Please select your vacancy from the list below:
-            </p>
-          ) : (
-            <p className="text-xl text-gray-600">No vacancies available.</p>
-          )}
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-4 flex flex-col justify-between h-full"
-          >
-            <div>
-              {!!vacancies.length &&
-                vacancies.map((vacancy) => (
-                  <label
-                    key={vacancy.id}
-                    className="flex items-center space-x-2 text-xl"
-                  >
-                    <input
-                      required
-                      type="radio"
-                      value={vacancy.name}
-                      checked={selectedVacancy === vacancy.name}
-                      onChange={() => setSelectedVacancy(vacancy.name)}
-                      className="accent-blue-600 my-4"
-                    />
-                    <span>{vacancy.name}</span>
-                  </label>
-                ))}
-            </div>
-            <Button type="submit" path={"/form"}>
+    <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-xl shadow-md  relative">
+      <div className={`${vacancies.length < 9 ? "min-h-[90vh]" : ""} `}>
+        <h2 className="text-4xl font-bold mb-4">Select a Vacancy</h2>
+        {!!vacancies.length ? (
+          <p className="text-xl text-gray-600">
+            Please select your vacancy from the list below:
+          </p>
+        ) : (
+          <p className="text-xl text-gray-600">No vacancies available.</p>
+        )}
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 flex flex-col justify-between "
+        >
+          <div className="mb-5">
+            {!!vacancies.length &&
+              vacancies.map((vacancy) => (
+                <label
+                  key={vacancy.id}
+                  className="flex items-center space-x-2 text-xl"
+                >
+                  <input
+                    required
+                    type="radio"
+                    value={vacancy.name}
+                    checked={selectedVacancy === vacancy.name}
+                    onChange={() => setSelectedVacancy(vacancy.name)}
+                    className="accent-blue-600 my-4"
+                  />
+                  <span>{vacancy.name}</span>
+                </label>
+              ))}
+
+
+            <Button
+              css={"absolute bottom-0 left-5 right-5"}
+              type="submit"
+              path={"/form"}
+            >
               Next
             </Button>
-          </form>
-        </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
