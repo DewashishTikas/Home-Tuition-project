@@ -18,13 +18,7 @@ const Layout = () => {
     <>
       <Header Ypos={Ypos} />
       <main className="overflow-hidden">
-        <Suspense
-          fallback={
-            <div className="min-h-screen flex items-center justify-center">
-              <LoadingPage />
-            </div>
-          }
-        >
+
           <Suspense
             fallback={
               <div className="min-h-screen flex items-center justify-center">
@@ -34,7 +28,6 @@ const Layout = () => {
           >
             {<Outlet context={{ setCurrentRef }} />}
           </Suspense>
-        </Suspense>
       </main>
       <Suspense>
         <Footer />
