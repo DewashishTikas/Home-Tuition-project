@@ -21,7 +21,7 @@ startTransition(async () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ adminUserName, adminPass }),
+        body: JSON.stringify({ adminUserName:adminUserName.trim(), adminPass:adminPass.trim() }),
       }
     );
     if (response.status === 200) {

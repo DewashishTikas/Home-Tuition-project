@@ -50,7 +50,7 @@ export default function VacancySelector() {
   }
   return (
     <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-xl shadow-md  relative">
-      <div className={`${vacancies.length < 9 ? "min-h-[90vh]" : ""} `}>
+      <div className={`${vacancies.length < 9 ? "min-h-[86vh]" : ""} `}>
         <h2 className="text-4xl font-bold mb-4">Select a Vacancy</h2>
         {!!vacancies.length ? (
           <p className="text-xl text-gray-600">
@@ -84,7 +84,7 @@ export default function VacancySelector() {
 
 
             <Button
-              css={"absolute bottom-0 left-5 right-5"}
+              css={"absolute bottom-8 left-5 right-5"}
               type="submit"
               path={"/form"}
             >
